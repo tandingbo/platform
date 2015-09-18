@@ -5,6 +5,9 @@ import com.tdb.core.service.IAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * ClassName: AccountServiceImpl
  * Description:
@@ -15,4 +18,8 @@ import org.springframework.stereotype.Service;
 public class AccountServiceImpl implements IAccountService {
     @Autowired
     private IAccountDao accountDao;
+
+    public List<Map<String, Object>> listMapPage() {
+        return accountDao.listMapPage();
+    }
 }

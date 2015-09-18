@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -25,6 +26,9 @@ public class AccountController extends BaseController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public Map<String, Object> listMapAccount(){
         Map<String, Object> result = new HashMap<String, Object>();
+        result.put("status", 1);
+        List<Map<String, Object>> listMap = accountService.listMapPage();
+        result.put("result", listMap);
         return result;
     }
 }

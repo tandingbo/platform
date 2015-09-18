@@ -3,6 +3,9 @@ package com.tdb.core.dao.impl;
 import com.tdb.core.dao.IAccountDao;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * ClassName: AccountDaoImpl
  * Description:
@@ -11,4 +14,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository("accountDao")
 public class AccountDaoImpl implements IAccountDao {
+    public List<Map<String, Object>> listMapPage() {
+        return null;
+    }
 }

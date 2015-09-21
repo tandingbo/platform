@@ -12,7 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * ClassName: AccountController
@@ -29,6 +28,7 @@ public class AccountController extends BaseController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView listMapAccount() {
         List<Map<String, Object>> listMap = accountService.listMapPage();
+
 
         int totalCount = listMap.size();
         Pager pager = new Pager(totalCount, 1);

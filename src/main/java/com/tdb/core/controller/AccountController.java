@@ -1,15 +1,18 @@
 package com.tdb.core.controller;
 
 import com.tdb.base.controller.BaseController;
+import com.tdb.base.page.Pager;
 import com.tdb.core.service.IAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * ClassName: AccountController
@@ -24,11 +27,15 @@ public class AccountController extends BaseController {
     private IAccountService accountService;
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public Map<String, Object> listMapAccount(){
-        Map<String, Object> result = new HashMap<String, Object>();
-        result.put("status", 1);
+    public ModelAndView listMapAccount() {
         List<Map<String, Object>> listMap = accountService.listMapPage();
-        result.put("result", listMap);
-        return result;
+
+        int totalCount = listMap.size();
+        Pager pager = new Pager(totalCount, 1);
+        pager.setList(listMap);
+
+        Map<String, Object> model = new HashMap<String, Object>();
+        model.put("page", pager);
+        return new ModelAndView("", model);
     }
 }
